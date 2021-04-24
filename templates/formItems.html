@@ -20,7 +20,7 @@
 {%- endmacro %}
 
 <!-- RADIO -->
-{% macro radio_group(name, title, value='', options=[]) -%}
+{% macro radio_group(name, title, value='', options=[], required=False) -%}
     <div class="input-item">
         <label>{{ title }}</label>
 
@@ -32,6 +32,7 @@
                         name="{{ name }}"
                         type="radio"
                         value="{{ item_value }}"
+                        {{ 'required' if required else '' }}
                     />
                     <label for="{{ name }}">{{ item_label }}</label>
                 </div>
@@ -41,11 +42,11 @@
 {%- endmacro %}
 
 <!-- SELECT -->
-{% macro select(name, title, value='', placeholder='', options=[]) -%}
+{% macro select(name, title, value='', placeholder='', options=[], required=False) -%}
     <div class="input-item">
         <label>{{ title }}</label>
 
-        <select name="{{ name }}" class="input-field">
+        <select name="{{ name }}" class="input-field" {{ 'required' if required else '' }}>
             <option value="" disabled selected>{{ placeholder }}</option>
             {% for item_value, item_label in options %}
                 <option value="{{ item_value }}">{{ item_label }}</option>
@@ -55,7 +56,7 @@
 {%- endmacro %}
 
 <!-- TEXT -->
-{% macro input(name, title, value='', type='text', placeholder='') -%}
+{% macro input(name, title, value='', type='text', placeholder='', required=False) -%}
     <div class="input-item">
         <label>{{ title }}</label>
         <input
@@ -64,11 +65,12 @@
             type="{{ type }}"
             placeholder="{{ placeholder }}"
             value="{{ value|e }}"
+            {{ 'required' if required else '' }}
         />
     </div>
 {%- endmacro %}
 
-{%- macro textarea(name, title, value='', placeholder='', rows=6) -%}
+{%- macro textarea(name, title, value='', placeholder='', rows=6, required=False) -%}
     <div class="input-item">
         <label>{{ title }}</label>
         <textarea
@@ -76,6 +78,7 @@
             name="{{ name }}"
             rows="{{ rows }}"
             placeholder="{{ placeholder }}"
+            {{ 'required' if required else '' }}
         >{{ value|e }}</textarea>
     </div>
 {%- endmacro %}

@@ -3,22 +3,22 @@
 
 {% block content %}
     <main class="signup-main">
-        <form action="">
+        <form action="/signup" method="POST">
             {{ items.radio_group('usertype', 'Do you want to be a', options=[
                 ("teacher", "Volunteer - Teacher"),
                 ("student", "Student"),
                 ("tech", "Volunteer - Tech"),
-            ]) }}
+            ], required=True) }}
             
-            {{ items.input('name', 'Name', placeholder='enter your complete name') }}
-            {{ items.input('email', 'Email', placeholder='enter your email') }}
+            {{ items.input('name', 'Name', placeholder='enter your complete name', required=True) }}
+            {{ items.input('email', 'Email', placeholder='enter your email', required=True) }}
             
-            {{ items.radio_group('usertype', 'What is your English level', options=[
+            {{ items.radio_group('english_level', 'What is your English level', options=[
                 ("beginner", "Beginner"),
                 ("intermediary", "Intermediary"),
                 ("advanced", "Advanced"),
                 ("native", "Native speaker"),
-            ]) }}
+            ], required=True) }}
 
             <div class="form-row">
                 {{ items.select('education_level', 'Education level', placeholder='Select an option', options=[
@@ -27,8 +27,13 @@
                     ("tech", "Technical Degree"),
                     ("none", "I don't have a degree"),
                     ("other", "Other"),
-                ]) }}
-                {{ items.input('education_institution', 'University/School', placeholder='enter the name of your school/university') }}
+                ], required=True) }}
+                {{ items.input(
+                    'education_institution',
+                    'University/School',
+                    placeholder='enter the name of your school/university',
+                    required=True
+                ) }}
             </div>
 
             {{ items.checkbox_group('availability', "I'm available on", options=[
@@ -47,7 +52,7 @@
                     ("2h", "2 hours p/ day"),
                     ("4h", "4 hours p/ day"),
                     ("6h", "6 hours p/ day"),
-                ]) }}
+                ], required=True) }}
                 {{ items.select('country', 'Country', placeholder='Select your country', options=[
                     ("argentina", "Argentina"),
                     ("brazil", "Brazil"),
@@ -55,8 +60,8 @@
                     ("germany", "Germany"),
                     ("usa", "USA"),
                     ("other", "Other"),
-                ]) }}
-                {{ items.input('max_students', 'Max students', type='number') }}
+                ], required=True) }}
+                {{ items.input('max_students', 'Max students', type='number', required=True) }}
             </div>
 
             {{ items.checkbox_group('characteristics', 'Characteristics', options=[
@@ -73,16 +78,18 @@
             {{ items.textarea(
                 'bio',
                 'Bio Profile',
-                placeholder='Create your profile description here'
+                placeholder='Create your profile description here',
+                required=True
             ) }}
             {{ items.textarea(
                 'can_help_with',
                 'I can help with',
-                placeholder='Describe your skills and how you can help'
+                placeholder='Describe your skills and how you can help',
+                required=True
             ) }}
 
             <div class="checkbox-item" style="margin-top: 12px;">
-                <input id="declare-woman" type="checkbox" name="declare-woman"/>
+                <input id="declare-woman" type="checkbox" value="check" name="declare_woman" required/>
                 <label for="declare-woman">I declare to be a woman considering the sex or /and gender as parameter.</label>
             </div>
 
