@@ -1,6 +1,93 @@
 {% extends "base.html" %}
+{% import "formItems.html" as items %}
 
 {% block content %}
-    <main>
+    <main class="signup-main">
+        <form action="">
+            {{ items.radio_group('usertype', 'Do you want to be a', options=[
+                ("teacher", "Volunteer - Teacher"),
+                ("student", "Student"),
+                ("tech", "Volunteer - Tech"),
+            ]) }}
+            
+            {{ items.input('name', 'Name', placeholder='enter your complete name') }}
+            {{ items.input('email', 'Email', placeholder='enter your email') }}
+            
+            {{ items.radio_group('usertype', 'What is your English level', options=[
+                ("beginner", "Beginner"),
+                ("intermediary", "Intermediary"),
+                ("advanced", "Advanced"),
+                ("native", "Native speaker"),
+            ]) }}
+
+            <div class="form-row">
+                {{ items.select('education_level', 'Education level', placeholder='Select an option', options=[
+                    ("bachelor", "Bachelor's Degree"),
+                    ("master", "Master's Degree"),
+                    ("tech", "Technical Degree"),
+                    ("none", "I don't have a degree"),
+                    ("other", "Other"),
+                ]) }}
+                {{ items.input('education_institution', 'University/School', placeholder='enter the name of your school/university') }}
+            </div>
+
+            {{ items.checkbox_group('availability', "I'm available on", options=[
+                ("monday", "Monday"),
+                ("tuesday", "Tuesday"),
+                ("wednesday", "Wednesday"),
+                ("thursday", "Thursday"),
+                ("friday", "Friday"),
+                ("saturday", "Saturday"),
+                ("sunday", "Sunday"),
+            ]) }}
+
+            <div class="form-row">
+                {{ items.select('time_available', 'Time available', placeholder='Select an option', options=[
+                    ("1h", "1 hour p/ day"),
+                    ("2h", "2 hours p/ day"),
+                    ("4h", "4 hours p/ day"),
+                    ("6h", "6 hours p/ day"),
+                ]) }}
+                {{ items.select('country', 'Country', placeholder='Select your country', options=[
+                    ("argentina", "Argentina"),
+                    ("brazil", "Brazil"),
+                    ("canada", "Canada"),
+                    ("germany", "Germany"),
+                    ("usa", "USA"),
+                    ("other", "Other"),
+                ]) }}
+                {{ items.input('max_students', 'Max students', type='number') }}
+            </div>
+
+            {{ items.checkbox_group('characteristics', 'Characteristics', options=[
+                ("talk-advanced", "I like to talk with advanced"),
+                ("speak-slow", "I speak slow"),
+                ("patient", "Patient"),
+                ("straight", "Straight"),
+                ("talk-beginner", "I like to talk with beginners"),
+                ("good-listener", "I'm a good linstener"),
+                ("speak-fast", "I speak fast"),
+                ("soft-heart", "Soft heart"),
+            ]) }}
+
+            {{ items.textarea(
+                'bio',
+                'Bio Profile',
+                placeholder='Create your profile description here'
+            ) }}
+            {{ items.textarea(
+                'can_help_with',
+                'I can help with',
+                placeholder='Describe your skills and how you can help'
+            ) }}
+
+            <div class="checkbox-item" style="margin-top: 12px;">
+                <input id="declare-woman" type="checkbox" name="declare-woman"/>
+                <label for="declare-woman">I declare to be a woman considering the sex or /and gender as parameter.</label>
+            </div>
+
+            {{ items.button('btn-submit', 'SAVE') }}
+        </form>
     </main>
 {% endblock %}
+

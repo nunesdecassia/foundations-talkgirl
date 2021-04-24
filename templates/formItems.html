@@ -1,0 +1,87 @@
+<!-- CHECKBOX -->
+{% macro checkbox_group(name, title, value='', options=[]) -%}
+    <div class="input-item">
+        <label>{{ title }}</label>
+
+        <div class="input-field checkbox-group">
+            {% for item_value, item_label in options %}
+                <div class="checkbox-item">
+                    <input
+                        id="{{ item_value }}"
+                        name="{{ name }}"
+                        type="checkbox"
+                        value="{{ item_value }}"
+                    />
+                    <label for="{{ name }}">{{ item_label }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{%- endmacro %}
+
+<!-- RADIO -->
+{% macro radio_group(name, title, value='', options=[]) -%}
+    <div class="input-item">
+        <label>{{ title }}</label>
+
+        <div class="input-field radio-group">
+            {% for item_value, item_label in options %}
+                <div class="radio-item">
+                    <input
+                        id="{{ item_value }}"
+                        name="{{ name }}"
+                        type="radio"
+                        value="{{ item_value }}"
+                    />
+                    <label for="{{ name }}">{{ item_label }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{%- endmacro %}
+
+<!-- SELECT -->
+{% macro select(name, title, value='', placeholder='', options=[]) -%}
+    <div class="input-item">
+        <label>{{ title }}</label>
+
+        <select name="{{ name }}" class="input-field">
+            <option value="" disabled selected>{{ placeholder }}</option>
+            {% for item_value, item_label in options %}
+                <option value="{{ item_value }}">{{ item_label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+{%- endmacro %}
+
+<!-- TEXT -->
+{% macro input(name, title, value='', type='text', placeholder='') -%}
+    <div class="input-item">
+        <label>{{ title }}</label>
+        <input
+            class="input-field"
+            name="{{ name }}"
+            type="{{ type }}"
+            placeholder="{{ placeholder }}"
+            value="{{ value|e }}"
+        />
+    </div>
+{%- endmacro %}
+
+{%- macro textarea(name, title, value='', placeholder='', rows=6) -%}
+    <div class="input-item">
+        <label>{{ title }}</label>
+        <textarea
+            class="input-field"
+            name="{{ name }}"
+            rows="{{ rows }}"
+            placeholder="{{ placeholder }}"
+        >{{ value|e }}</textarea>
+    </div>
+{%- endmacro %}
+
+<!-- BUTTON -->
+
+{%- macro button(id, label) -%}
+    <button class="button" type="submit">{{ label }}</button>
+{%- endmacro %}
