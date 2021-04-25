@@ -1,6 +1,23 @@
 {% extends "base.html" %}
+{% import "formItems.html" as items %}
 
 {% block content %}
-    <main>
+    <main class="login-main">
+        <div class="flex-column login-box">
+            <div class="login-title">
+                <h1>LOGIN</h1>
+            </div>
+
+            <form action="/login" method="POST">
+                {{ items.input('email', 'Email', placeholder='type your email here', required=True) }}
+                {{ items.input('password', 'Password', type='password', placeholder='type your email here', required=True) }}
+                
+                <a style="margin-top: 12px; align-self: flex-end;" href="/">FORGOT PASSWORD</a>
+
+                {{ items.button('btn-submit', 'LOGIN', 'small') }}
+
+                <a style="align-self: center;" href="/signup">CREATE NEW ACCOUNT</a>
+            </form>
+        </div>
     </main>
 {% endblock %}

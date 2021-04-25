@@ -1,11 +1,11 @@
 from flask import render_template, request, redirect
-from routes.database import save_user
+from routes.database import create_user
 
 
 def handle_signup():
     if request.method == 'POST':
-        save_user(request.form)
+        create_user(request.form)
         return redirect('/')
 
-    print('--- RENDERING SIGNUP ---')
+    print('--- SIGNUP ---')
     return render_template('signup.html', title='Talkgirl - SIGNUP')

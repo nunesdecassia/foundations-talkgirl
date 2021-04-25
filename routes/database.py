@@ -1,36 +1,33 @@
 import os
-import google.auth.credentials
-
-from google.cloud import firestore
 from unittest.mock import Mock
+from google.cloud import firestore
+from google.auth.credentials import Credentials
 
+# initialize database
+if os.getenv('GAE_ENV', '').startswith('standard'):
+    # Production in the standard environment
+    db = firestore.Client()
+else:
+    # Github
+    db = firestore.Client(project="test", credentials=Mock(spec=Credentials))
+# db = firestore.Client()
 
 logged_user = None
 
-print(os.environ.get('ENV'))
-
-# initialize database
-if os.environ.get('ENV') == 'test':
-    db = firestore.Client(
-        project="test",
-        credentials=Mock(spec=google.auth.credentials.Credentials)
-    )
-else:
-    db = firestore.Client()
-
 
 def authenticate(login_form_data):
-    logged_user = db.collection('users').document(login_form_data.get('email'))
+    email = login_form_data.get('email')
+    password = login_form_data.get('password')
 
-    print(logged_user)
+    logged_user = db.collection('users').document(email).get().to_dict()
 
-    # if logged_user:
-    #     return True
-    # else:
-    #     return False
+    if logged_user:
+        return logged_user['auth']['password'] == password
+    else:
+        return False
 
 
-def save_user(user_form_data):
+def create_user(user_form_data):
     user_email = user_form_data.get('email')
 
     db.collection('users').add({

@@ -86,6 +86,6 @@
 
 <!-- BUTTON -->
 
-{%- macro button(id, label) -%}
-    <button class="button" type="submit">{{ label }}</button>
+{%- macro button(id, label, size="mid") -%}
+    <button class="button button-{{ size }}" type="submit">{{ label }}</button>
 {%- endmacro %}

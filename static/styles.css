@@ -8,26 +8,57 @@ body {
     padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6, a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+h1 { font-size: 36px; }
+h2 { font-size: 28px; }
+h3 { font-size: 22px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+
+a {
+    font-size: 11px;
+    color: black;
+}
+
+main {
+    padding: 60px;
+}
+
 /* LOGIN */
 
 .login-main {
-    padding: 0 140px;
     padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.login-box label,
+.login-box input {
+    background-color: #8DC8D9 !important;
 }
 
 .login-box {
-    width: 400px;
-    height: 450px;
-    border: 2px solid black;
+    width: 448px;
+    height: 476px;
+    padding: 40px;
+    background: #8DC8D9;
+
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    box-shadow: -8px 7px 0px #000000;
     border-radius: 10px;
-    padding: 24px;
 }
 
-.image-box {
-    width: 430px;
-    height: 490px;
-    background-color: black;
-    margin-left: 2em;
+.login-title {
+    margin: auto;
+    margin-bottom: 48px;    
 }
 
 /* SIGNUP */
@@ -128,8 +159,6 @@ option:disabled {
 .button {
     font-family: 'Nunito Sans', sans-serif;
     
-    min-width: 212px;
-    min-height: 64px;
     align-self: center;
     background: #FFD200;
     border: 1px solid black;
@@ -138,3 +167,14 @@ option:disabled {
     box-shadow: -2px 4px 0px black, inset 1px 4px 4px rgba(0, 0, 0, 0.3);
     border-radius: 12px;
 }
+
+.button-small {
+    min-width: 118px;
+    height: 44px;
+}
+
+.button-mid {
+    min-width: 212px;
+    height: 64px;
+}
+
