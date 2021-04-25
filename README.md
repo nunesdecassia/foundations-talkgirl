@@ -8,14 +8,10 @@ Install `pipenv`:
 
 > pip install pipenv
 
-Activate the virtual environment:
-
-> pipenv shell
-
 Install all dependencies:
 
-> pipenv install
+> pipenv install --dev
 
 Start the project:
 
-> python run_dev.py
+> pipenv run dev
