@@ -25,3 +25,10 @@ Lint with flask8:
 Test with pytest:
 
 > pipenv run test
+
+## Updating 'requirements.txt'
+
+Because Google Cloud needs 'requirements.txt' to install all dependencies,
+we must recreate the file every time we add a new production depency, using:
+
+> pipenv lock -r > requirements.txt
