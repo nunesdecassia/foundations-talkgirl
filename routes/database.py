@@ -1,8 +1,21 @@
+import os
+import google.auth.credentials
 from google.cloud import firestore
+from unittest.mock import Mock
 from uuid import uuid4
 
 
-db = firestore.Client()
+# initialize database
+if os.getenv('GAE_ENV', '').startswith('standard'):
+    # Production in the standard environment
+    db = firestore.Client()
+else:
+    # Local execution
+    db = firestore.Client(
+        project="test",
+        credentials=Mock(spec=google.auth.credentials.Credentials)
+    )
+
 
 def save_user(user_form_data):
     user_id = uuid4().hex
