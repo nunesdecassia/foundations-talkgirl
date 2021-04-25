@@ -12,6 +12,14 @@
             
             {{ items.input('name', 'Name', placeholder='enter your complete name', required=True) }}
             {{ items.input('email', 'Email', placeholder='enter your email', required=True) }}
+            {{ items.input(
+                'password',
+                'Create password',
+                type='password',
+                placeholder='create your password using min. 8 characters',
+                required=True,
+                minlength=8,
+            ) }}
             
             {{ items.radio_group('english_level', 'What is your English level', options=[
                 ("beginner", "Beginner"),
