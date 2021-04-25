@@ -15,3 +15,13 @@ Install all dependencies:
 Start the project:
 
 > pipenv run dev
+
+## Scripts
+
+Lint with flask8:
+
+> pipenv run lint
+
+Test with pytest:
+
+> pipenv run test
