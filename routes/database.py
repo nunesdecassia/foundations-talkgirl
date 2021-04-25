@@ -1,38 +1,49 @@
 import os
 import google.auth.credentials
+
 from google.cloud import firestore
 from unittest.mock import Mock
-from uuid import uuid4
 
+
+logged_user = None
+
+print(os.environ.get('ENV'))
 
 # initialize database
-if os.getenv('GAE_ENV', '').startswith('standard'):
-    # Production in the standard environment
-    db = firestore.Client()
-else:
-    # Local execution
+if os.environ.get('ENV') == 'test':
     db = firestore.Client(
         project="test",
         credentials=Mock(spec=google.auth.credentials.Credentials)
     )
+else:
+    db = firestore.Client()
+
+
+def authenticate(login_form_data):
+    logged_user = db.collection('users').document(login_form_data.get('email'))
+
+    print(logged_user)
+
+    # if logged_user:
+    #     return True
+    # else:
+    #     return False
 
 
 def save_user(user_form_data):
-    user_id = uuid4().hex
+    user_email = user_form_data.get('email')
 
-    db.collection(u'users').add({
-        'uid': user_id,
+    db.collection('users').add({
         'usertype': user_form_data.get('usertype'),
         'declare_woman': user_form_data.get('declare_woman') == 'check',
 
         'auth': {
-            'email': user_form_data.get('email'),
             'password': user_form_data.get('password')
         },
 
         'bio': {
+            'email': user_email,
             'name': user_form_data.get('name'),
-            'email': user_form_data.get('email'),
             'country': user_form_data.get('country'),
 
             'description': user_form_data.get('bio'),
@@ -52,4 +63,4 @@ def save_user(user_form_data):
             'time_available': user_form_data.get('time_available'),
             'max_students': user_form_data.get('max_students')
         }
-    }, user_id)
+    }, user_email)
