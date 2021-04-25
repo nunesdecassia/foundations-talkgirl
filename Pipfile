@@ -10,6 +10,7 @@ test = "pytest --junitxml=test-results.xml"
 
 [packages]
 Flask = "1.1.2"
+google-cloud-firestore = "*"
 
 [dev-packages]
 flake8 = "3.8.4"
