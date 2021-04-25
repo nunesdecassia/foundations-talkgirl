@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask
 
 from routes.dashboard import render_dashboard
 from routes.home import render_home
