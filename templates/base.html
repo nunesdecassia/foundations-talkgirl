@@ -11,10 +11,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <nav class="nav-bar">
+        <img src ="{{ url_for('static', filename='image/talkgirl.png') }}" height="60px">
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Volunteer</a></li>
+            <li><a href="/">Student</a></li>
+            <li><a href="/">Contact</a></li>
+            <li><a href="/login">Login</a></li>
+            <!-- <li><a href="/">English</a></li> -->
+        </ul>
+    </nav>
     {% block content%}
     {% endblock %}
 </body>
