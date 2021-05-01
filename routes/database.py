@@ -11,19 +11,17 @@ else:
     # Local/Production environment
     db = firestore.Client()
 
-logged_user = None
-
-
 def authenticate(login_form_data):
     email = login_form_data.get('email')
     password = login_form_data.get('password')
 
     logged_user = db.collection('users').document(email).get().to_dict()
 
-    if logged_user:
-        return logged_user['auth']['password'] == password
+    if logged_user and logged_user['auth']['password'] == password:
+        logged_user.pop('auth', None)
+        return logged_user
     else:
-        return False
+        return None
 
 
 def create_user(user_form_data):

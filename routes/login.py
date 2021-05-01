@@ -1,10 +1,13 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session
 from routes.database import authenticate
 
 
 def handle_login():
     if request.method == 'POST':
-        if authenticate(request.form):
+        user = authenticate(request.form)
+
+        if user:
+            session['user'] = user
             return redirect('/dashboard')
 
     print('--- LOGIN ---')

@@ -1,4 +1,5 @@
 from flask import Flask
+from uuid import uuid4
 
 from routes.dashboard import render_dashboard
 from routes.home import render_home
@@ -6,6 +7,7 @@ from routes.login import handle_login
 from routes.signup import handle_signup
 
 app = Flask(__name__)
+app.secret_key = uuid4().bytes
 
 # HOME
 app.add_url_rule('/', 'home', render_home)
