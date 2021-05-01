@@ -11,6 +11,7 @@ else:
     # Local/Production environment
     db = firestore.Client()
 
+
 def authenticate(login_form_data):
     email = login_form_data.get('email')
     password = login_form_data.get('password')

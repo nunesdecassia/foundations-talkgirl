@@ -26,4 +26,3 @@ app.add_url_rule('/dashboard', 'dashboard', render_dashboard)
 @app.template_filter('hashtag')
 def create_hashtag(value):
     return '#' + value.replace('-', '').upper()
-
