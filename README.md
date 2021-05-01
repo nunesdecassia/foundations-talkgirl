@@ -12,6 +12,10 @@ Install all dependencies:
 
 > pipenv install --dev
 
+Login on GCloud project ([more](https://googleapis.dev/python/google-api-core/latest/auth.html)):
+
+> gcloud auth application-default login
+
 Start the project:
 
 > pipenv run dev
