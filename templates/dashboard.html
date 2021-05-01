@@ -1,6 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <main>
+    <main class="dashboard-main">
+        <div class="profile-box">
+            <div class="profile-header">
+                <h1>Welcome, {{ user["bio"]["name"]}}</h1>
+            </div>
+            <div class="profile-content">
+                <div class="profile-content-column">
+                    <div class="profile-name-box">
+                        <h3>{{ user["bio"]["name"]}}</h3>
+                        <h5>{{ user["bio"]["country"] | capitalize }}</h5>
+                        <p>{{ user["bio"]["education"]["education_institution"] }}</p>
+                    </div>
+
+                    <div class="profile-tag-box">
+                        <div class="profile-tag-box-div"></div>
+                        {% for tag in user["bio"]["characteristics"] %}
+                            <div class="hashtag">{{ tag | hashtag }}</div>
+                        {% endfor %}
+                        <div class="profile-tag-box-div"></div>
+                    </div>
+
+                    <p class="text-center"><span class="profile-label">Max students:</span> {{ user["availability"]["max_students"] }}</p>
+                    <p class="text-center"><span class="profile-label">Available on:</span> {{ (user["availability"]["week_day"]) | join(', ') | title }}</p>
+                    <p class="text-center"><span class="profile-label">Available hours:</span> {{ user["availability"]["time_available"] }}</p>
+                </div>
+                <div class="profile-content-column">
+                    <p><span class="profile-label">Name:</span> {{ user["bio"]["name"] }}</p>
+                    <p><span class="profile-label">Email:</span> {{ user["bio"]["email"] }}</p>
+                    <p><span class="profile-label">About myself:</span> {{ user["bio"]["description"] }}</p>
+                    <p><span class="profile-label">How can I help:</span> {{ user["bio"]["can_help_with"] }}</p>
+                </div>
+            </div>
+        </div>
     </main>
 {% endblock %}

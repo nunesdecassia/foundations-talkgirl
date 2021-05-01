@@ -20,3 +20,10 @@ app.add_url_rule('/signup', 'signup', handle_signup, methods=['GET', 'POST'])
 
 # DASHBOARD
 app.add_url_rule('/dashboard', 'dashboard', render_dashboard)
+
+
+# CUSTOM JINJA FILTERS
+@app.template_filter('hashtag')
+def create_hashtag(value):
+    return '#' + value.replace('-', '').upper()
+
