@@ -4,13 +4,12 @@ from google.cloud import firestore
 from google.auth.credentials import Credentials
 
 # initialize database
-if os.getenv('GAE_ENV', '').startswith('standard'):
-    # Production in the standard environment
-    db = firestore.Client()
-else:
-    # Github
+if os.environ.get('ENV') == 'test':
+    # Test environment
     db = firestore.Client(project="test", credentials=Mock(spec=Credentials))
-# db = firestore.Client()
+else:
+    # Local/Production environment
+    db = firestore.Client()
 
 logged_user = None
 

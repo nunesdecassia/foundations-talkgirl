@@ -15,6 +15,7 @@ google-cloud-firestore = "*"
 [dev-packages]
 flake8 = "3.8.4"
 pytest = "6.1.2"
+pytest-env = "*"
 
 [requires]
 python_version = "3.8"
