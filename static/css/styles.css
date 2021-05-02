@@ -6,6 +6,9 @@
 body {
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6, a {
@@ -27,6 +30,7 @@ a {
 
 main {
     padding: 60px;
+    flex-grow: 1;
 }
 
 .hashtag {
@@ -47,6 +51,10 @@ main {
     padding-left: 24px;
     padding-right: 24px;
     height: 94px;
+}
+
+.nav-bar-logo {
+    height: 60px;
 }
 
 .nav-links {
@@ -70,6 +78,63 @@ main {
 .nav-links a {
     font-size: 18px;
     text-decoration: none;
+}
+
+/* FOOTER */
+
+
+footer {
+    display: flex;
+    background: #FD7776;
+    height: 160px;
+    padding: 0px;
+    justify-content: space-between;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 300px;
+
+    list-style: none;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    padding-left: 24px;
+    text-transform: uppercase;
+    color: black;
+}
+
+.links > * {
+    margin: 16px 0;
+}
+
+.links a {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color:#FFD200;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    padding-right: 24px;
+}
+
+.icons a {
+    margin: 12px;
+    text-decoration: none;
+}
+
+.icons img {
+    width: 36px;
 }
 
 /* LOGIN */

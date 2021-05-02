@@ -16,7 +16,7 @@
 </head>
 <body>
     <nav class="nav-bar">
-        <img src ="{{ url_for('static', filename='image/talkgirl.png') }}" height="60px">
+        <img class="nav-bar-logo" src="{{ url_for('static', filename='image/talkgirl.png') }}" alt="Talkgirl Icon">
 
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
@@ -29,5 +29,31 @@
     </nav>
     {% block content%}
     {% endblock %}
+
+    <footer>
+        <div class="links">
+            <a href="/">About</a>
+            <a href="/">Volunteer</a>
+            <a href="/">Student</a>
+            <a href="/">Contact</a>
+            <a href="/signup">Register</a>
+            <a href="/login">Login</a>
+        </div>
+
+        <div class="icons">
+            <a href="http://www.google.com">
+                <img src="{{ url_for('static', filename='image/instagram.png') }}" alt="Instagram Icon">
+            </a>
+            <a href="http://www.google.com">
+                <img src="{{ url_for('static', filename='image/facebook.png') }}" alt="Facebook Icon">
+            </a>
+            <a href="http://www.google.com">
+                <img src="{{ url_for('static', filename='image/linkedin.png') }}" alt="Linkedin Icon">
+            </a>
+            <a href="http://www.google.com">
+                <img src="{{ url_for('static', filename='image/twitter.png') }}" alt="Twitter Icon">
+            </a>
+        </div>
+    </footer>
 </body>
 </html>
