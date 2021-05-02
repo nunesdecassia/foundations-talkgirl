@@ -1,6 +1,10 @@
 from main import app
 
-app.config['FLASK_ENV'] = 'development'
-app.config['DEBUG'] = True
+app.jinja_env.auto_reload = True
+app.config.update(
+    FLASK_ENV='development',
+    DEBUG=True,
+    TEMPLATES_AUTO_RELOAD=True
+)
 
 app.run(port='8080', host='localhost')
