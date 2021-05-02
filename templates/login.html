@@ -14,6 +14,10 @@
                 
                 <a style="margin-top: 12px; align-self: flex-end;" href="/">FORGOT PASSWORD</a>
 
+                {% if error %}
+                    <p class="error-message">{{ error }}</p>
+                {% endif %}
+                
                 {{ items.button('btn-submit', 'LOGIN', 'small') }}
 
                 <a style="align-self: center;" href="/signup">CREATE NEW ACCOUNT</a>

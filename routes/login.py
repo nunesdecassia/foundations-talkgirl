@@ -3,12 +3,16 @@ from routes.database import authenticate
 
 
 def handle_login():
+    error = None
+
     if request.method == 'POST':
         user = authenticate(request.form)
 
         if user:
             session['user'] = user
             return redirect('/dashboard')
+        else:
+            error="This email/password combination is not valid."
 
     print('--- LOGIN ---')
-    return render_template('login.html', title='Talkgirl - LOGIN')
+    return render_template('login.html', title='Talkgirl - LOGIN', error=error)
