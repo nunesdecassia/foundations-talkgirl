@@ -8,7 +8,7 @@ def test_index():
     # create a version of our website that we can use for testing
     with app.test_client() as test_client:
         # mimic a browser: 'GET /', as if you visit the site
-        response = test_client.get('/')
+        response = test_client.get('/login')
 
         # check that the HTTP response is a success
         assert response.status_code == 200

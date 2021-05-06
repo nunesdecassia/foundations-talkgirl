@@ -12,7 +12,7 @@ def handle_login():
             session['user'] = user
             return redirect('/dashboard')
         else:
-            error="This email/password combination is not valid."
+            error = "This email/password combination is not valid."
 
     print('--- LOGIN ---')
     return render_template('login.html', title='Talkgirl - LOGIN', error=error)
