@@ -28,7 +28,7 @@ def authenticate(login_form_data):
 def create_user(user_form_data):
     user_email = user_form_data.get('email')
 
-    db.collection('users').add({
+    docRef = db.collection('users').add({
         'usertype': user_form_data.get('usertype'),
         'declare_woman': user_form_data.get('declare_woman') == 'check',
 
@@ -58,4 +58,6 @@ def create_user(user_form_data):
             'time_available': user_form_data.get('time_available'),
             'max_students': user_form_data.get('max_students')
         }
-    }, user_email)
+    }, user_email)[1]
+
+    return docRef.get().to_dict()
