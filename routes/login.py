@@ -16,3 +16,8 @@ def handle_login():
 
     print('--- LOGIN ---')
     return render_template('login.html', title='Talkgirl - LOGIN', error=error)
+
+
+def handle_logout():
+    session.pop('user')
+    return redirect('/login')
