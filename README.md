@@ -1,6 +1,6 @@
-# GirlTalk - CODE Foundations
+# TalkGirl - CODE Foundations Fall 21
 
-Descricao
+An English learning platform for women. The focus of this project was to create the signup and login pages.
 
 ## Quickstart
 
